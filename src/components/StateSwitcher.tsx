@@ -10,10 +10,10 @@ interface StateSwitcherProps {
   currentState: ViewState;
 }
 
-const STATES: { id: ViewState; label: string; desc: string }[] = [
+const STATES: { id: ViewState; label: string; desc: string; hash?: string }[] = [
   { id: "live", label: "Live", desc: "Real-Time Lisbon" },
   { id: "closed", label: "Simulate Closed", desc: "Mon 10:00" },
-  { id: "special-sold-out", label: "Simulate Sold Out", desc: "Special Sold Out" },
+  { id: "special-sold-out", label: "Simulate Sold Out", desc: "Special Sold Out", hash: "#special" },
 ];
 
 export function StateSwitcher({ currentState }: StateSwitcherProps) {
@@ -39,7 +39,7 @@ export function StateSwitcher({ currentState }: StateSwitcherProps) {
           <nav aria-label="Simulated states" className="flex items-center gap-1.5 flex-wrap">
             {STATES.map((item) => {
               const isActive = activeMode === item.id;
-              const href = item.id === "live" ? "/" : `/?state=${item.id}`;
+              const href = item.id === "live" ? "/" : `/?state=${item.id}${item.hash || ""}`;
 
               return (
                 <Link

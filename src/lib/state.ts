@@ -153,32 +153,41 @@ export function getStateConfig(state: ViewState): StateConfig {
         nextOpening: "Tuesday at 08:00",
       };
 
-    case "special-sold-out": {
-      const hoursStatus = checkLisbonHours(lisbonNow.day, lisbonNow.hours, lisbonNow.minutes);
+    case "special-sold-out":
       return {
         state: "special-sold-out",
         now: {
-          day: lisbonNow.day,
-          dayName: lisbonNow.dayName,
-          time: lisbonNow.time,
-          formatted: lisbonNow.formatted,
-          isRealTime: true,
+          day: "tuesday",
+          dayName: "Tuesday",
+          time: "12:00",
+          formatted: "Tuesday 12:00",
+          isRealTime: false,
         },
-        isOpen: hoursStatus.isOpen,
+        isOpen: true,
         isSpecialSoldOut: true,
-        statusMessage: hoursStatus.isOpen
-          ? "Open now (Today's special sold out)"
-          : "Closed now",
-        nextOpening: hoursStatus.nextOpening,
+        statusMessage: "Open now (Today's special sold out)",
       };
-    }
 
     case "open":
+      return {
+        state: "open",
+        now: {
+          day: "tuesday",
+          dayName: "Tuesday",
+          time: "11:30",
+          formatted: "Tuesday 11:30",
+          isRealTime: false,
+        },
+        isOpen: true,
+        isSpecialSoldOut: false,
+        statusMessage: "Open now until 15:00",
+      };
+
     case "live":
     default: {
       const hoursStatus = checkLisbonHours(lisbonNow.day, lisbonNow.hours, lisbonNow.minutes);
       return {
-        state: state === "open" ? "open" : "live",
+        state: "live",
         now: {
           day: lisbonNow.day,
           dayName: lisbonNow.dayName,

@@ -159,7 +159,7 @@ export function Footer({ restaurant, currentState = "live" }: FooterProps) {
               Simulate Closed
             </Link>
             <Link
-              href="/?state=special-sold-out"
+              href="/?state=special-sold-out#special"
               className={`px-3 py-1 rounded-full transition-all font-semibold ${
                 currentState === "special-sold-out"
                   ? "bg-gradient-to-r from-amber-600 to-amber-700 text-white shadow-xs"
