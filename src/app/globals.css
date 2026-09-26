@@ -1,26 +1,233 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Warm Espresso Noir & Roasted Cardamom Palette */
+  --background: #110e0c;         /* Deep roasted espresso / volcanic earth */
+  --foreground: #faf5ed;         /* Warm toasted parchment / cream */
+
+  /* Spiced Atelier Brand Colors */
+  --brand: #b45309;              /* Core warm amber-700 */
+  --brand-light: #d97706;        /* Warm saffron / amber-600 */
+  --brand-lighter: #f59e0b;      /* Bright golden honey / amber-500 */
+  --brand-subtle: rgba(217, 119, 6, 0.14);
+  --brand-surface: #1a1612;      /* Spiced walnut card surface */
+  --brand-dark: #8b3e05;
+  --brand-darker: #6d2f02;
+
+  /* Accent Color Accents */
+  --accent-terracotta: #c2593f;  /* Lisbon terracotta tile */
+  --accent-sage: #10b981;        /* Fresh cardamom leaf / herb green */
+  --accent-oat: #eab308;         /* Golden oat / gluten-free */
+  --accent-paprika: #f43f5e;     /* Smoked piri-piri / spicy */
+
+  /* Surface & Border System */
+  --card-bg: #181410;
+  --card-border: rgba(255, 235, 210, 0.08);
+  --card-hover-border: rgba(217, 119, 6, 0.35);
 }
 
-@theme inline {
+/* Sun-Washed Lisbon Linen Light Theme */
+[data-theme="light"] {
+  --background: #faf8f5;
+  --foreground: #1c1612;
+  --brand-surface: #f4eee5;
+  --card-bg: #ffffff;
+  --card-border: rgba(180, 83, 9, 0.16);
+  --card-hover-border: rgba(180, 83, 9, 0.45);
+}
+
+[data-theme="light"] body {
+  background-color: #faf8f5 !important;
+  color: #1c1612 !important;
+}
+
+[data-theme="light"] .bg-\[\#110E0C\] {
+  background-color: #faf8f5 !important;
+}
+
+[data-theme="light"] .bg-\[\#110E0C\]\/95 {
+  background-color: rgba(250, 248, 245, 0.95) !important;
+}
+
+[data-theme="light"] .bg-\[\#181410\] {
+  background-color: #ffffff !important;
+}
+
+[data-theme="light"] .bg-\[\#1A1612\] {
+  background-color: #f6f1e8 !important;
+}
+
+[data-theme="light"] .bg-\[\#1E1914\] {
+  background-color: #f7f3ed !important;
+}
+
+[data-theme="light"] .bg-\[\#0C0A08\] {
+  background-color: #f1ebdf !important;
+}
+
+[data-theme="light"] .text-\[\#FAF5ED\] {
+  color: #1c1612 !important;
+}
+
+[data-theme="light"] .text-stone-300 {
+  color: #4a4038 !important;
+}
+
+[data-theme="light"] .text-stone-400 {
+  color: #6a5d52 !important;
+}
+
+[data-theme="light"] .border-white\/10 {
+  border-color: rgba(180, 83, 9, 0.12) !important;
+}
+
+[data-theme="light"] .border-white\/5 {
+  border-color: rgba(180, 83, 9, 0.08) !important;
+}
+
+[data-theme="light"] .border-amber-900\/30 {
+  border-color: rgba(180, 83, 9, 0.22) !important;
+}
+
+[data-theme="light"] .border-amber-900\/25 {
+  border-color: rgba(180, 83, 9, 0.18) !important;
+}
+
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Registered Tailwind tokens */
+  --color-brand: var(--brand);
+  --color-brand-light: var(--brand-light);
+  --color-brand-lighter: var(--brand-lighter);
+  --color-brand-subtle: var(--brand-subtle);
+  --color-brand-surface: var(--brand-surface);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-darker: var(--brand-darker);
+
+  --font-serif: var(--font-serif), Georgia, Cambria, serif;
+  --font-sans: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+/* Hide scrollbar for touch category navigation */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Warm Spiced Ambient Glow */
+.warm-ambient-glow {
+  background: radial-gradient(
+    circle at 50% -10%,
+    rgba(217, 119, 6, 0.16) 0%,
+    rgba(194, 89, 63, 0.08) 40%,
+    transparent 75%
+  );
+}
+
+/* Card Glow Effect */
+.card-ambient-highlight {
+  background: radial-gradient(
+    circle at top right,
+    rgba(245, 158, 11, 0.08) 0%,
+    transparent 65%
+  );
+}
+
+/* Pure CSS Entrance Animations */
+@keyframes fadeInRise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate-fade-in-rise {
+    animation: fadeInRise 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Clean Print Stylesheet (@media print) */
+@media print {
+  @page {
+    margin: 1.2cm;
+    size: A4 portrait;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #111111 !important;
+    font-size: 10.5pt !important;
+    line-height: 1.35 !important;
+  }
+
+  header {
+    padding-top: 0 !important;
+    padding-bottom: 12pt !important;
+    border-bottom: 2pt solid #111111 !important;
+  }
+
+  .print-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 16pt !important;
+  }
+
+  section,
+  li,
+  aside,
+  table,
+  tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a {
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+
+  .font-mono {
+    font-weight: 700 !important;
+  }
 }
