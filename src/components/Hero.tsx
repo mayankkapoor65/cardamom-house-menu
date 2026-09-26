@@ -40,7 +40,7 @@ export function Hero({
               />
             </span>
             <span className="tracking-wider uppercase text-[11px]">
-              {isOpen ? "Open Now · Serving Brunch" : "Closed Today"}
+              {statusMessage || (isOpen ? "Open Now · Serving Brunch" : "Closed Today")}
             </span>
             <span
               suppressHydrationWarning

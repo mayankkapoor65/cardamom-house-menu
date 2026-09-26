@@ -160,6 +160,14 @@ export function Footer({ restaurant, currentState = "live" }: FooterProps) {
             </Link>
             <Link
               href="/?state=special-sold-out#special"
+              onClick={() => {
+                setTimeout(() => {
+                  const target = document.querySelector("#special");
+                  if (target) {
+                    target.scrollIntoView({ behavior: "smooth", block: "center" });
+                  }
+                }, 50);
+              }}
               className={`px-3 py-1 rounded-full transition-all font-semibold ${
                 currentState === "special-sold-out"
                   ? "bg-gradient-to-r from-amber-600 to-amber-700 text-white shadow-xs"

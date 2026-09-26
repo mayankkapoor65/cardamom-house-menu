@@ -45,6 +45,18 @@ export function StateSwitcher({ currentState }: StateSwitcherProps) {
                 <Link
                   key={item.id}
                   href={href}
+                  onClick={() => {
+                    if (item.hash) {
+                      setTimeout(() => {
+                        const target = document.querySelector(item.hash!);
+                        if (target) {
+                          target.scrollIntoView({ behavior: "smooth", block: "center" });
+                        }
+                      }, 50);
+                    } else {
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }
+                  }}
                   className={`min-h-[36px] px-3 py-1.5 rounded-lg transition-all font-semibold inline-flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 ${
                     isActive
                       ? "bg-amber-600 text-white shadow-xs"

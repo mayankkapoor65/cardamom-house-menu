@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { menuData } from "@/lib/data";
 import { parseViewState, getStateConfig } from "@/lib/state";
@@ -19,6 +19,16 @@ export function MenuPageClient() {
   const rawState = searchParams.get("state");
   const viewState = parseViewState(rawState);
   const stateConfig = getStateConfig(viewState);
+
+  // Auto-scroll to special section when special-sold-out is triggered
+  useEffect(() => {
+    if (viewState === "special-sold-out") {
+      const el = document.getElementById("special");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }
+  }, [viewState]);
 
   // Client dietary filter state ("all" | "V" | "GF")
   const [dietaryFilter, setDietaryFilter] = useState<DietaryFilterValue>("all");

@@ -53,6 +53,14 @@
   background-color: #ffffff !important;
 }
 
+[data-theme="light"] .bg-\[\#16120E\] {
+  background-color: #f3ece2 !important;
+}
+
+[data-theme="light"] .bg-\[\#14100D\]\/60 {
+  background-color: #ede5da !important;
+}
+
 [data-theme="light"] .bg-\[\#1A1612\] {
   background-color: #f6f1e8 !important;
 }
